@@ -16,3 +16,6 @@ requires "astpatternmatching"
 # nimble test does not work for me out of the box
 task test, "Runs the test suite":
   exec "nim c -r tests/test_messages.nim"
+
+task extractSpec, "Extracts typescript from markdown":
+  exec "cd resources && nim c -r extract_spec.nim"
