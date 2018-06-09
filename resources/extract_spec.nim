@@ -19,14 +19,11 @@ proc collect(accumulate: CodeCollect, nextItem: string): CodeCollect =
     if isCloseCode(result, nextItem): 
         result.collect = false
         result.code.add "\n\n"
-        echo "CLOSE: " & $result.collectionCount & nextItem 
     if result.collect:
         result.code.add nextItem 
-        echo "ACCUMULATE: " & $result.collectionCount & nextItem
     elif nextItem.len > 12 and nextItem[0..12] == "```typescript":
         result.collect = true
         result.collectionCount = 0
-        echo "OPEN: "
 
 proc main(): void =
     const specMarkdown = slurp("./specification.md").splitLines()
